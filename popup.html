@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Time Limit Reminder</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="container">
+    <h1>Time Limit Reminder</h1>
+    
+    <div class="timer-section">
+      <div class="progress-ring">
+        <svg class="progress" viewBox="0 0 100 100">
+          <circle class="progress-ring-background" cx="50" cy="50" r="45"/>
+          <circle class="progress-ring-circle" cx="50" cy="50" r="45"/>
+        </svg>
+        <div class="time-display">
+          <span id="timeRemaining">00:00</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="input-section">
+      <label for="timeLimit">Set Time Limit (minutes):</label>
+      <input type="number" id="timeLimit" min="1" max="180" placeholder="Enter minutes">
+      <div class="error-message" id="errorMessage"></div>
+    </div>
+
+    <div class="button-section">
+      <button id="startTimer" class="primary-button">Start Timer</button>
+      <button id="resetTimer" class="secondary-button" disabled>Reset Timer</button>
+    </div>
+  </div>
+  <script src="popup.js"></script>
+</body>
+</html>
