@@ -1,66 +1,229 @@
 # Time Limit Reminder Chrome Extension
 
-A Chrome extension that helps users manage their time spent on websites by setting time limits and providing notifications.
+A powerful Chrome extension that helps users manage their digital wellbeing by setting time limits for their browsing sessions. This extension features a modern, intuitive interface with real-time visual feedback, customizable time limits, and automatic tab management.
+
+## 📌 Table of Contents
+- [Features](#features)
+- [Installation](#installation)
+- [Usage Guide](#usage-guide)
+- [Technical Documentation](#technical-documentation)
+- [Development](#development)
+- [Troubleshooting](#troubleshooting)
+- [Contributing](#contributing)
+- [License](#license)
 
 ## Features
 
-- Set custom time limits for browsing sessions (1-180 minutes)
-- Visual countdown timer with circular progress indicator
-- 90% time usage warning notification
-- Automatic tab closure when time expires
-- Persistent timer across tab switches
-- Clean, modern UI with smooth animations
+### Core Functionality
+- **Customizable Time Limits**: Set browsing time limits from 1 to 180 minutes
+- **Visual Countdown**: Real-time circular progress indicator showing remaining time
+- **Smart Notifications**: Receive alerts at 90% time usage and completion
+- **Automatic Tab Management**: Graceful tab closure when time expires
+- **Session Persistence**: Timer continues running across tab switches
+- **Reset Capability**: Option to reset timer at any point
+
+### User Interface
+- **Modern Design**: Clean, intuitive interface with smooth animations
+- **Progress Visualization**: Circular progress ring with countdown display
+- **Responsive Layout**: Adapts to different screen sizes and resolutions
+- **Error Handling**: Clear feedback for invalid inputs
+- **Accessibility**: Keyboard-friendly navigation and screen reader support
+
+### Technical Features
+- **State Management**: Persistent storage of timer state
+- **Background Processing**: Efficient background service worker
+- **Cross-Tab Synchronization**: Consistent timer state across browser tabs
+- **Resource Efficient**: Minimal CPU and memory usage
 
 ## Installation
 
-1. Clone this repository or download the ZIP file
+### From Source
+1. Clone the repository:
+   ```bash
+   git clone https://github.com/yourusername/time-limit-reminder.git
+   ```
 2. Open Chrome and navigate to `chrome://extensions/`
-3. Enable "Developer mode" in the top right corner
+3. Enable "Developer mode" using the toggle in the top right
 4. Click "Load unpacked" and select the extension directory
+5. The extension icon should appear in your Chrome toolbar
 
-## Usage
+### Configuration
+- No additional configuration required
+- Extension works out of the box after installation
+- Settings are automatically saved and persisted
 
+## Usage Guide
+
+### Basic Usage
 1. Click the extension icon in your Chrome toolbar
-2. Enter a time limit in minutes (1-180)
+2. Enter your desired time limit (1-180 minutes)
 3. Click "Start Timer" to begin the countdown
-4. You'll receive a notification when:
-   - 90% of your time has elapsed
-   - Your time is up (the tab will close automatically after 5 seconds)
-5. Use the "Reset Timer" button to cancel the current timer
+4. Monitor remaining time through the circular progress indicator
+5. Receive notifications at 90% time usage and completion
 
-## File Structure
+### Timer Controls
+- **Start Timer**: Begins countdown for specified duration
+- **Reset Timer**: Cancels current timer and resets interface
+- **Time Input**: Enter duration in minutes (1-180)
 
+### Notifications
+- **90% Warning**: Notification when approaching time limit
+- **Time's Up**: Final notification before tab closure
+- **Auto-Close**: 5-second grace period before tab closes
+
+### Best Practices
+- Set realistic time limits for your browsing sessions
+- Use the reset function if you need to adjust your time
+- Keep an eye on the progress indicator for time management
+- Don't ignore the 90% warning notification
+
+## Technical Documentation
+
+### Architecture
 ```
-├── manifest.json
-├── popup.html
-├── popup.js
-├── styles.css
-├── background.js
-└── icons/
+time-limit-reminder/
+├── manifest.json      # Extension configuration
+├── popup.html        # User interface structure
+├── popup.js          # UI logic and interactions
+├── styles.css        # Visual styling
+├── background.js     # Background processes
+└── icons/            # Extension icons
     ├── icon16.png
     ├── icon48.png
     └── icon128.png
 ```
 
-## Technical Details
+### Components
+1. **Manifest (manifest.json)**
+   - Defines extension metadata
+   - Specifies permissions
+   - Declares resource locations
 
-- Built with HTML5, CSS3, and JavaScript
-- Uses Chrome Extension APIs:
-  - `chrome.storage` for persistent data
-  - `chrome.notifications` for time alerts
-  - `chrome.tabs` for tab management
-  - `chrome.alarms` for timing events
-- Modern CSS features including CSS variables and transitions
-- Responsive design that works across different screen sizes
+2. **Popup Interface (popup.html, popup.js, styles.css)**
+   - Handles user interactions
+   - Manages timer display
+   - Controls visual feedback
+
+3. **Background Service (background.js)**
+   - Manages timer state
+   - Handles notifications
+   - Controls tab operations
+
+### APIs Used
+- `chrome.storage`: State persistence
+- `chrome.notifications`: User alerts
+- `chrome.tabs`: Tab management
+- `chrome.alarms`: Timer functionality
+
+### Storage Structure
+```javascript
+{
+  endTime: number,    // Timestamp when timer ends
+  totalTime: number   // Total seconds allocated
+}
+```
+
+## Development
+
+### Prerequisites
+- Chrome browser
+- Basic knowledge of HTML, CSS, and JavaScript
+- Familiarity with Chrome Extension APIs
+
+### Setup Development Environment
+1. Fork the repository
+2. Clone your fork locally
+3. Set up your preferred code editor
+4. Enable Chrome Developer Mode
+
+### Building
+1. Make your code changes
+2. Test in Chrome using "Load unpacked"
+3. Verify all features work as expected
+4. Check for console errors
+
+### Testing
+- Manual testing of all features
+- Cross-tab functionality verification
+- Notification system checks
+- Timer accuracy validation
+
+## Troubleshooting
+
+### Common Issues
+1. **Timer Not Starting**
+   - Check if time input is valid
+   - Verify extension permissions
+   - Ensure no conflicts with other extensions
+
+2. **Notifications Not Showing**
+   - Check Chrome notification permissions
+   - Verify system notification settings
+   - Restart Chrome if needed
+
+3. **Tab Not Closing**
+   - Check extension permissions
+   - Verify Chrome version compatibility
+   - Ensure no blocking scripts
+
+### Debug Mode
+1. Open Chrome Developer Tools
+2. Navigate to Extensions tab
+3. Select extension background page
+4. Monitor console for errors
 
 ## Contributing
 
+### How to Contribute
 1. Fork the repository
-2. Create your feature branch (`git checkout -b feature/AmazingFeature`)
-3. Commit your changes (`git commit -m 'Add some AmazingFeature'`)
-4. Push to the branch (`git push origin feature/AmazingFeature`)
+2. Create a feature branch:
+   ```bash
+   git checkout -b feature/YourFeatureName
+   ```
+3. Commit your changes:
+   ```bash
+   git commit -m 'Add some feature'
+   ```
+4. Push to the branch:
+   ```bash
+   git push origin feature/YourFeatureName
+   ```
 5. Open a Pull Request
+
+### Code Style Guidelines
+- Use meaningful variable and function names
+- Comment complex logic
+- Follow existing code formatting
+- Write clean, maintainable code
+
+### Pull Request Process
+1. Update documentation if needed
+2. Add tests for new features
+3. Ensure all tests pass
+4. Request review from maintainers
 
 ## License
 
-This project is licensed under the Apache 2.0 License - see the LICENSE file for details.
+This project is licensed under the MIT License - see the LICENSE file for details.
+
+```
+MIT License
+
+Copyright (c) 2025 Bharath K
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files.
+```
+
+## Support
+
+For support, please:
+1. Check the troubleshooting guide
+2. Search existing issues
+3. Create a new issue if needed
+
+---
+
+Made with ❤️ by Bharath K
+
+[Back to top](#time-limit-reminder-chrome-extension)
